@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HeroesBackend.Common\HeroesBackend.Common.csproj" />
+    <ProjectReference Include="..\HeroesBackend.Entities\HeroesBackend.Entities.csproj" />
+  </ItemGroup>
+
+</Project>
