@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
 
 namespace HeroesBackend
 {
@@ -38,7 +39,15 @@ namespace HeroesBackend
         {
             services.AddDbContext<Repository.AppContext>();
 
+            services.AddSwaggerGen(setup =>
+            {
+                setup.SwaggerDoc("HeroesApi", new OpenApiInfo { Title = "Heroes API", Version = "1" });
+
+                setup.DescribeAllEnumsAsStrings();
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
             services.ConfigureIoCNetCore(Configuration);
         }
 
@@ -54,6 +63,14 @@ namespace HeroesBackend
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(setup =>
+            {
+                setup.SwaggerEndpoint("/swagger/HeroesApi/swagger.json", "Heroes API V1");
+                setup.RoutePrefix = string.Empty;
+            });
 
             app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
             app.UseHttpsRedirection();
