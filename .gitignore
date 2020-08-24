@@ -16,6 +16,7 @@
 /HeroesBackend/HeroesBackend/bin/Debug/netcoreapp2.2
 /HeroesBackend/HeroesBackend/obj
 /HeroesBackend/HeroesBackend/Properties
+/HeroesBackend/.vs
 /HeroesBackend/HeroesBackend.BusinessLayer/bin/Debug/netcoreapp2.2
 /HeroesBackend/HeroesBackend.BusinessLayer/obj
 /HeroesBackend/HeroesBackend.Common
